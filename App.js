@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Text, View, SafeAreaView, Image, StyleSheet, Dimensions, TextInput } from 'react-native';
-
-
+import SearchIcon from './src/components/SvgComponent';
 
 
 const App = () => {
@@ -67,13 +66,34 @@ const App = () => {
       paddingHorizontal: 20,
       marginRight: 'auto',
       marginLeft: 'auto',
+    },
+    searchWrapper: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    searchInput: {
+      height: 40,
+      borderColor: 'gray', 
+      borderWidth: 2, 
+      width: '90%', 
+      marginBottom: 10, 
+      alignSelf: 'center', 
+      padding: 10,
+      paddingLeft: 35
+    },
+    searchIcon: {
+      position: 'absolute',
+      left: 30,
+      top: 10
     }
   })
 
   return (
     <SafeAreaView style={styles.container}>
-      <View>
-            <TextInput placeholder="Anime ara" value={search} onChangeText={text => searchAnimeResult(text)} style={{ height: 40, borderColor: 'gray', borderWidth: 2, width: '90%', marginBottom: 10, alignSelf: 'center', padding: 10 }}></TextInput>
+      <View style={styles.searchWrapper}>
+            <SearchIcon style={styles.searchIcon}></SearchIcon>
+            <TextInput placeholder="Anime ara" value={search} onChangeText={text => searchAnimeResult(text)} style={styles.searchInput}></TextInput>
       </View>
       { search ? isLoading ? <ActivityIndicator/> : ( 
       <FlatList
